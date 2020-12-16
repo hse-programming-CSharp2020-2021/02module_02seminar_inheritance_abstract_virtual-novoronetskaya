@@ -61,44 +61,23 @@ namespace Task_02
             //в catch выводите на экран "Incorrect input!"
             Dog dog;
             Cow cow;
-            string dogName = Console.ReadLine();
-            Console.WriteLine(dogName);
-            int dogAge = 0;
-            string breed = Console.ReadLine();
-            Console.WriteLine(breed);
-            bool isTrained = true;
-            string cowName = Console.ReadLine();
-            Console.WriteLine(cowName);
-            int cowAge = 0;
-            int milkQuantity = 0;
             try
             {
-                dogAge = IntInput();
-                isTrained = BoolInput();
-                cowAge = IntInput();
-                milkQuantity = IntInput();
-            }
-            catch(ArgumentException ex)
-            {
-                Console.WriteLine(ex.Message);
-                return;
-            }
-            try
-            {
+                string dogName = Console.ReadLine();
+                Console.WriteLine(dogName);
+                int dogAge = IntInput();
+                string breed = Console.ReadLine();
+                Console.WriteLine(breed);
+                bool isTrained = BoolInput();
+                string cowName = Console.ReadLine();
+                Console.WriteLine(cowName);
+                int cowAge = IntInput();
+                int milkQuantity = IntInput();
                 dog = new Dog(dogName, dogAge, breed, isTrained);
                 dog.AnimalSound();
                 Console.WriteLine(dog.AnimalInfo());
-            }
-            catch (ArgumentException ex)
-            {
-                Console.WriteLine(ex.Message);
-                return;
-            }
-            try
-            {
                 cow = new Cow(cowName, cowAge, milkQuantity);
                 cow.AnimalSound();
-                Console.WriteLine(cow.AnimalInfo());
             }
             catch (ArgumentException ex)
             {
@@ -110,7 +89,6 @@ namespace Task_02
         static bool BoolInput()
         {
             string input = Console.ReadLine();
-            Console.WriteLine(input);
             if (input == "true")
             {
                 return true;
@@ -131,7 +109,6 @@ namespace Task_02
             //int выбросить Exception (обрабатывать не нужно).
             string input = Console.ReadLine();
             int result;
-            Console.WriteLine(input);
             if (!int.TryParse(input, out result) || result < 0)
             {
                 throw new ArgumentException("Incorrect input!");
