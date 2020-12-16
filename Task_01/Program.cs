@@ -43,16 +43,17 @@ namespace Task_01
 {
     class Program
     {
+        static List<Lentil> lentils = new List<Lentil>();
+        static List<Ashes> ashes = new List<Ashes>();
         private static readonly Random rnd = new Random();
-        static void Main(string[] args)
+        static void Main()
         {
             int n;
-            //добавьте проверку на некорректную длинну массива
-            if (!int.TryParse(Console.ReadLine(), out n))
+            if (!int.TryParse(Console.ReadLine(), out n) || n <= 0)
             {
                 Console.WriteLine("Incorrect input!");
+                return;
             }
-    
             Something[] array = CreateArray(n);
             PrintArray(array);
             PrintSeparately(array);
@@ -61,50 +62,61 @@ namespace Task_01
         static Something[] CreateArray(int n)
         {
             Something[] array = new Something[n];
-
-            /*Заполните массив array n элементами (Lentil/Ashes) 
-             *вводом чисел с клавиатуры (array[i] = new Lentil(1.06);)
-             *В случае некорретного значения вывести "Incorrect input!" и продолжить ввод,
-             * пропустив этот элемент.
-             * ...*/
-
+            for (int i = 0; i < n; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    double volume;
+                    if (!double.TryParse(Console.ReadLine(), out volume) || volume < 0 || volume - 1 > Double.Epsilon)
+                    {
+                        Console.WriteLine("Incorrect input!");
+                        continue;
+                    }
+                    array[i] = new Ashes(volume);
+                    ashes.Add((Ashes)array[i]);
+                }
+                else
+                {
+                    double weight;
+                    if (!double.TryParse(Console.ReadLine(), out weight) || weight < 0 || weight - 2 > Double.Epsilon)
+                    {
+                        Console.WriteLine("Incorrect input!");
+                        continue;
+                    }
+                    array[i] = new Lentil(weight);
+                    lentils.Add((Lentil)array[i]);
+                }
+            }
             return array;
         }
 
         static void PrintArray(Something[] array)
         {
-            /*Выведите массив на экран в одну строку, 
-             * разделяя элементы пробелами. Не забудьте переопредлить ToString().
-             * ...*/
+            foreach (Something element in array)
+            {
+                Console.Write($"{element} ");
+            }
+            Console.WriteLine();
         }
 
         static void PrintSeparately(Something[] array)
         {
-            /*выведите в одну строку элементы типа Lentil, 
-             * затем с новой строки элементы типа Ashes.
-             * Также через пробел!*/
-            string lentils = "";
-            for (int i = 0; i < array.Length; i++)
+            foreach (Ashes element in ashes)
             {
-                if (array[i] is Lentil)
-                {
-                    lentils += $"{array[i]} ";
-                }
+                Console.Write($"{element} ");
             }
-            Console.WriteLine(lentils);
-            //вывод элементов Ashes реализуйте самостоятельно
-            //...
-
-            /*Реализация для примера, которая забанена в рамках данного дз.
-             *var lentilsCollection = array.Where(x => x is Lentil);
-             *Console.WriteLine(String.Join(" ", lentilsCollection));*/
+            Console.WriteLine();
+            foreach (Lentil element in lentils)
+            {
+                Console.Write($"{element} ");
+            }
+            Console.WriteLine();
         }
     }
 
     abstract class Something
     {
     }
-
     class Lentil : Something
     {
         private double weight;
@@ -123,11 +135,21 @@ namespace Task_01
                 weight = value;
             }
         }
+        public override string ToString()
+        {
+            return $"{Weight:f2}";
+        }
     }
-
-    //реализуйте класс Ashes по аналогии с Lentil, используя auto-свойства!
     class Ashes : Something
     {
-        
+        public double Volume { get; set; }
+        public Ashes(double volume)
+        {
+            Volume = volume;
+        }
+        public override string ToString()
+        {
+            return $"{Volume:f2}";
+        }
     }
 }
