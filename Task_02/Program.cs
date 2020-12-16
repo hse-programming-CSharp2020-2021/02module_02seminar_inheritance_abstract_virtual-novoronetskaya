@@ -78,6 +78,7 @@ namespace Task_02
             catch(ArgumentException ex)
             {
                 Console.WriteLine(ex.Message);
+                return;
             }
             try
             {
@@ -88,6 +89,7 @@ namespace Task_02
             catch (ArgumentException ex)
             {
                 Console.WriteLine(ex.Message);
+                return;
             }
             try
             {
@@ -98,17 +100,18 @@ namespace Task_02
             catch (ArgumentException ex)
             {
                 Console.WriteLine(ex.Message);
+                return;
             }
         }
 
         static bool BoolInput()
         {
             string input = Console.ReadLine();
-            if (input.ToLower() == "true")
+            if (input == "True")
             {
                 return true;
             }
-            else if (input.ToLower() == "false")
+            else if (input == "False")
             {
                 return false;
             }
