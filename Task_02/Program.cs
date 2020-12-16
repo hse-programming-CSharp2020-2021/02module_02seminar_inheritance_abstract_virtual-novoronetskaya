@@ -61,34 +61,74 @@ namespace Task_02
             //в catch выводите на экран "Incorrect input!"
             Dog dog;
             Cow cow;
-
             string dogName = Console.ReadLine();
-            int dogAge = IntInput();
+            int dogAge = 0;
             string breed = Console.ReadLine();
-            bool isTrained = BoolInput();
-
+            bool isTrained = true;
             string cowName = Console.ReadLine();
-            int cowAge = IntInput();
-            int milkQuantity = IntInput();
-
-            dog = new Dog(dogName, dogAge, breed, isTrained);
-            dog.AnimalSound();
-            Console.WriteLine(dog.AnimalInfo());
-
-            cow = new Cow(cowName, cowAge, milkQuantity);
-            cow.AnimalSound();
-            Console.WriteLine(cow.AnimalInfo());
+            int cowAge = 0;
+            int milkQuantity = 0;
+            try
+            {
+                dogAge = IntInput();
+                isTrained = BoolInput();
+                cowAge = IntInput();
+                milkQuantity = IntInput();
+            }
+            catch(ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            try
+            {
+                dog = new Dog(dogName, dogAge, breed, isTrained);
+                dog.AnimalSound();
+                Console.WriteLine(dog.AnimalInfo());
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            try
+            {
+                cow = new Cow(cowName, cowAge, milkQuantity);
+                cow.AnimalSound();
+                Console.WriteLine(cow.AnimalInfo());
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         static bool BoolInput()
         {
-            //обработать строковый ввод пользователя ("true"/"false")
+            string input = Console.ReadLine();
+            if (input == "true")
+            {
+                return true;
+            }
+            else if (input == "false")
+            {
+                return false;
+            }
+            else
+            {
+                throw new ArgumentException("Incorrect input!");
+            }
         }
 
         static int IntInput()
         {
             //обработать ввод integer, в случае, если пользователь ввел не 
             //int выбросить Exception (обрабатывать не нужно).
+            string input = Console.ReadLine();
+            int result;
+            if (!int.TryParse(input, out result) || result < 0)
+            {
+                throw new ArgumentException("Incorrect input!");
+            }
+            return result;
         }
     }
 
@@ -105,7 +145,10 @@ namespace Task_02
             }
             set
             {
-                //выбросьте исключение, если введена пустая строка
+                if (value == String.Empty)
+                {
+                    throw new ArgumentException("Incorrect input!");
+                }
                 name = value;
             }
         }
@@ -118,7 +161,6 @@ namespace Task_02
             }
             set
             {
-                //выбросьте исключение, если введена пустая строка
                 age = value;
             }
         }
@@ -135,7 +177,10 @@ namespace Task_02
 
         public Dog(string name, int age, string breed, bool isTrained)
         {
-            //реализуйте конструктор
+            Name = name;
+            Age = age;
+            Breed = breed;
+            IsTrained = isTrained;
         }
 
         public string Breed
@@ -146,7 +191,10 @@ namespace Task_02
             }
             private set
             {
-                //выбросьте исключение, если введена пустая строка
+                if (value == String.Empty)
+                {
+                    throw new ArgumentException("Incorrect input!");
+                }
                 breed = value;
             }
         }
@@ -187,7 +235,9 @@ namespace Task_02
 
         public Cow(string name, int age, int milkQuantity)
         {
-            //реализуйте конструктор
+            Name = name;
+            Age = age;
+            MilkQuantity = milkQuantity;
         }
 
         public int MilkQuantity 

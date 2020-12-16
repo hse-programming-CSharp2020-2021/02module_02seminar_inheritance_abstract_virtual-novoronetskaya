@@ -5,3 +5,10 @@ C:\Users\Lenovo X1 Extreme\source\repos\02module_02seminar\Task_02\obj\Debug\Tas
 C:\Users\Lenovo X1 Extreme\source\repos\02module_02seminar\Task_02\obj\Debug\Task_02.csproj.CoreCompileInputs.cache
 C:\Users\Lenovo X1 Extreme\source\repos\02module_02seminar\Task_02\obj\Debug\Task_02.exe
 C:\Users\Lenovo X1 Extreme\source\repos\02module_02seminar\Task_02\obj\Debug\Task_02.pdb
+C:\Users\пк\02module_02seminar_inheritance_abstract_virtual-novoronetskaya\Task_02\bin\Debug\Task_02.exe.config
+C:\Users\пк\02module_02seminar_inheritance_abstract_virtual-novoronetskaya\Task_02\bin\Debug\Task_02.exe
+C:\Users\пк\02module_02seminar_inheritance_abstract_virtual-novoronetskaya\Task_02\bin\Debug\Task_02.pdb
+C:\Users\пк\02module_02seminar_inheritance_abstract_virtual-novoronetskaya\Task_02\obj\Debug\Task_02.csprojAssemblyReference.cache
+C:\Users\пк\02module_02seminar_inheritance_abstract_virtual-novoronetskaya\Task_02\obj\Debug\Task_02.csproj.CoreCompileInputs.cache
+C:\Users\пк\02module_02seminar_inheritance_abstract_virtual-novoronetskaya\Task_02\obj\Debug\Task_02.exe
+C:\Users\пк\02module_02seminar_inheritance_abstract_virtual-novoronetskaya\Task_02\obj\Debug\Task_02.pdb
