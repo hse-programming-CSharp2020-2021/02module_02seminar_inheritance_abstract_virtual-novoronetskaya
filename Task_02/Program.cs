@@ -104,11 +104,11 @@ namespace Task_02
         static bool BoolInput()
         {
             string input = Console.ReadLine();
-            if (input == "true")
+            if (input.ToLower() == "true")
             {
                 return true;
             }
-            else if (input == "false")
+            else if (input.ToLower() == "false")
             {
                 return false;
             }
