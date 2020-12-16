@@ -44,15 +44,13 @@ namespace Task_01
     class Program
     {
         private static readonly Random rnd = new Random();
-        static void Main(string[] args)
+        static void Main()
         {
             int n;
-            //добавьте проверку на некорректную длинну массива
-            if (!int.TryParse(Console.ReadLine(), out n))
+            if (!int.TryParse(Console.ReadLine(), out n) || n < 0)
             {
                 Console.WriteLine("Incorrect input!");
             }
-    
             Something[] array = CreateArray(n);
             PrintArray(array);
             PrintSeparately(array);
@@ -61,13 +59,16 @@ namespace Task_01
         static Something[] CreateArray(int n)
         {
             Something[] array = new Something[n];
-
-            /*Заполните массив array n элементами (Lentil/Ashes) 
-             *вводом чисел с клавиатуры (array[i] = new Lentil(1.06);)
-             *В случае некорретного значения вывести "Incorrect input!" и продолжить ввод,
-             * пропустив этот элемент.
-             * ...*/
-
+            for (int i = 0; i < n; i++)
+            {
+                double weight;
+                if (!double.TryParse(Console.ReadLine(), out weight) || weight < 0 || weight - 2 > Double.Epsilon)
+                {
+                    Console.WriteLine("Incorrect input!");
+                    continue;
+                }
+                array[i] = new Lentil(weight);
+            }
             return array;
         }
 
@@ -124,10 +125,12 @@ namespace Task_01
             }
         }
     }
-
-    //реализуйте класс Ashes по аналогии с Lentil, используя auto-свойства!
     class Ashes : Something
     {
-        
+        public double Volume { get; set; }
+        public Ashes(double volume)
+        {
+            Volume = volume;
+        }
     }
 }

@@ -57,32 +57,25 @@ namespace Task_02
     {
         static void Main(string[] args)
         {
-            //самостоятельно оберните нужный блок(и) в try-catch
-            //в catch выводите на экран "Incorrect input!"
             Dog dog;
             Cow cow;
             try
             {
                 string dogName = Console.ReadLine();
-                Console.WriteLine(dogName);
                 int dogAge = IntInput();
                 string breed = Console.ReadLine();
-                Console.WriteLine(breed);
                 bool isTrained = BoolInput();
                 string cowName = Console.ReadLine();
-                Console.WriteLine(cowName);
                 int cowAge = IntInput();
                 int milkQuantity = IntInput();
                 dog = new Dog(dogName, dogAge, breed, isTrained);
                 dog.AnimalSound();
-                Console.WriteLine(dog.AnimalInfo());
                 cow = new Cow(cowName, cowAge, milkQuantity);
                 cow.AnimalSound();
             }
             catch (ArgumentException ex)
             {
                 Console.WriteLine(ex.Message);
-                return;
             }
         }
 
