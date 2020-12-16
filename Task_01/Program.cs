@@ -57,7 +57,6 @@ namespace Task_01
             Something[] array = CreateArray(n);
             PrintArray(array);
             PrintSeparately(array);
-            Console.ReadLine();
         }
 
         static Something[] CreateArray(int n)
@@ -65,19 +64,7 @@ namespace Task_01
             Something[] array = new Something[n];
             for (int i = 0; i < n; i++)
             {
-                int chooseClass = rnd.Next(2);
-                if (chooseClass == 0)
-                {
-                    double weight;
-                    if (!double.TryParse(Console.ReadLine(), out weight) || weight < 0 || weight - 2 > Double.Epsilon)
-                    {
-                        Console.WriteLine("Incorrect input!");
-                        continue;
-                    }
-                    array[i] = new Lentil(weight);
-                    lentils.Add((Lentil)array[i]);
-                }
-                else
+                if (i % 2 == 0)
                 {
                     double volume;
                     if (!double.TryParse(Console.ReadLine(), out volume) || volume < 0 || volume - 1 > Double.Epsilon)
@@ -87,6 +74,17 @@ namespace Task_01
                     }
                     array[i] = new Ashes(volume);
                     ashes.Add((Ashes)array[i]);
+                }
+                else
+                {
+                    double weight;
+                    if (!double.TryParse(Console.ReadLine(), out weight) || weight < 0 || weight - 2 > Double.Epsilon)
+                    {
+                        Console.WriteLine("Incorrect input!");
+                        continue;
+                    }
+                    array[i] = new Lentil(weight);
+                    lentils.Add((Lentil)array[i]);
                 }
             }
             return array;
@@ -98,19 +96,21 @@ namespace Task_01
             {
                 Console.Write($"{element} ");
             }
+            Console.WriteLine();
         }
 
         static void PrintSeparately(Something[] array)
         {
-            foreach (Lentil element in lentils)
-            {
-                Console.Write($"{element} ");
-            }
-            Console.WriteLine(lentils);
             foreach (Ashes element in ashes)
             {
                 Console.Write($"{element} ");
             }
+            Console.WriteLine();
+            foreach (Lentil element in lentils)
+            {
+                Console.Write($"{element} ");
+            }
+            Console.WriteLine();
         }
     }
 
