@@ -70,10 +70,10 @@ namespace Task_02
                 int milkQuantity = IntInput();
                 dog = new Dog(dogName, dogAge, breed, isTrained);
                 dog.AnimalSound();
-                Console.WriteLine(dog);
+                Console.Write(dog);
                 cow = new Cow(cowName, cowAge, milkQuantity);
                 cow.AnimalSound();
-                Console.WriteLine(cow);
+                Console.Write(cow);
             }
             catch (ArgumentException ex)
             {
