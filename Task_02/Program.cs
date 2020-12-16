@@ -62,10 +62,13 @@ namespace Task_02
             Dog dog;
             Cow cow;
             string dogName = Console.ReadLine();
+            Console.WriteLine(dogName);
             int dogAge = 0;
             string breed = Console.ReadLine();
+            Console.WriteLine(breed);
             bool isTrained = true;
             string cowName = Console.ReadLine();
+            Console.WriteLine(cowName);
             int cowAge = 0;
             int milkQuantity = 0;
             try
@@ -107,6 +110,7 @@ namespace Task_02
         static bool BoolInput()
         {
             string input = Console.ReadLine();
+            Console.WriteLine(input);
             if (input == "true")
             {
                 return true;
@@ -127,6 +131,7 @@ namespace Task_02
             //int выбросить Exception (обрабатывать не нужно).
             string input = Console.ReadLine();
             int result;
+            Console.WriteLine(input);
             if (!int.TryParse(input, out result) || result < 0)
             {
                 throw new ArgumentException("Incorrect input!");
