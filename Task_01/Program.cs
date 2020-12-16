@@ -49,7 +49,7 @@ namespace Task_01
         static void Main()
         {
             int n;
-            if (!int.TryParse(Console.ReadLine(), out n) || n < 0)
+            if (!int.TryParse(Console.ReadLine(), out n) || n <= 0)
             {
                 Console.WriteLine("Incorrect input!");
                 return;
