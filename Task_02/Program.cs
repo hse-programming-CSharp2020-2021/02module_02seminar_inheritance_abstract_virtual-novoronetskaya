@@ -107,6 +107,7 @@ namespace Task_02
         static bool BoolInput()
         {
             string input = Console.ReadLine();
+            Console.WriteLine(input);
             if (input == "True")
             {
                 return true;
